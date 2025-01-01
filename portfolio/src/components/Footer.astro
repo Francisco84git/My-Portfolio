@@ -1,29 +1,29 @@
+---
+import Link from "./LinksFooter.astro";
+import Logo from "./Logo.astro"
 
-<footer class="w-full bg-white shadow dark:bg-gray-900 mt-96">
+const linkList = [
+    { title: 'GitHub', href: 'https://github.com' },
+    { title: 'Linkedin', href: 'https://linkedin.com' },
+    { title: 'Codespaces', href: 'https://codespace.com' },
+    { title: 'Contacto', href: 'https://contacto.com' }
+];
+---
+
+<footer class="w-full bg-white shadow dark:bg-gray-900">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <p class="self-center text-2xl font-semibold whitespace-nowrap text-gray-300">
-                    <span class="text-indigo-500">Lu</span>Dnr
-                </p>
-            </a>
+            <Logo class="mb-4 sm:mb-0" />
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">GitHub</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Linkedin</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6">Codespaces</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline">Contacto</a>
-                </li>
+                {
+                    linkList.map(list => (
+                        <Link title={list.title} href={list.href}/>
+                    ))
+                }
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/" class="hover:underline">LuDnr™</a>. Derechos reservados.</span>
+        <span class="block text-sm text-gray-500 text-center dark:text-gray-400 pb-10">© 2024 <a href="https://flowbite.com/" class="hover:underline">LuDnr™</a>. Derechos reservados.</span>
     </div>
 </footer>
 
