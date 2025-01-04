@@ -1,29 +1,27 @@
 ---
 import Attributes from "./Attributes.astro";
 
-const attributes = ['Velocidad', 'Adaptabilidad', 'Responsabilidad', 'Calidad'];
+const attributes = ['Impacto inmediato', 'Crecimiento sostenible', 'Diseños personalizados', 'Optimización continua', 'Velocidad de entrega', 'Experiencia intuitiva', 'Alta conversión', 'Mayor posicionamiento'];
 ---
 
 <div class="mt-10 grid place-items-center pb-10 md:pb-0 md:order-2">
     <img src="/desktop.svg" alt="">
 </div>
 
-<div class="grid place-items-center">
+<div class="grid place-items-center md:pr-6">
     <div class="max-w-lg">
         <span class="bg-purple-100 border-purple-200 border text-purple-600 -ml-px rounded-full text-xs font-medium px-3 py-1">
             + 6 años de experiencia
         </span>
         
-        <h3 class="text-2xl font-medium mt-4 [text-wrap:balance]">
-            Supercharge Your Marketing Strategy with Advanced Analytics
+        <h3 class="text-2xl font-medium mt-4 text-pretty">
+            Tu visión, mi compromiso: crear el sitio web que tu empresa necesita.
         </h3>
-        <p class="mt-4 text-slate-600 [text-wrap:balance]">
-            Harness the potential of AI-driven marketing analytics to optimize your
-            campaigns, understand your audience better, and achieve unprecedented
-            growth.
+        <p class="mt-4 text-slate-600 text-pretty">
+            Mi enfoque está en entender tu visión y superarla, creando una presencia digital que no solo atraiga, sino que posicione a tu negocio como líder.
         </p>
 
-        <ul class="grid mt-6 text-left gap-y-4">
+        <ul class="grid sm:grid-cols-2 mt-6 text-left gap-y-4 gap-x-4">
             {
                 attributes.map(attribute => (
                     <Attributes title={attribute} />

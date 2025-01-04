@@ -42,14 +42,16 @@ const { image, tags, title, description, url } = Astro.props;
         <img class="rounded-md" src=`/projects/${image}` alt={title}>
     </div>
     <div class="mt-8">
-        {    
+        <div class="flex flex-wrap">
+          {    
             tags.map(tag => {
                 const {name, text} = TAGS.find(t => t.name === tag) || {};
                 return (
                     <span class={`${text} text-xs me-2 py-0.5 font-bold`}>{name?.toUpperCase()}</span>
                 )
             })
-        }
+          }
+        </div>
         <h3 class="text-xl lg:text-2xl font-medium mt-2"><span>{title}</span></h3>
         <p class="text-slate-600 mt-2 [text-wrap:balance]">
             <span>{description}</span>
