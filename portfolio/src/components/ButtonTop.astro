@@ -2,20 +2,27 @@
 import ChevronUp from "./icons/ChevronUp.astro";
 ---
 
-<button id="buttonTop" class="bg-violet-600 text-white fixed bottom-8 right-8 rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:bg-violet-800 transition-transform transform hover:scale-105 z-40">
+<button id="buttonTop" class="bg-violet-600 text-white fixed bottom-8 right-8 rounded-full shadow-lg w-16 h-16 items-center justify-center 
+hover:bg-violet-800 transition-transform transform hover:scale-105 z-40 hidden">
     <ChevronUp />
 </button>
 
 <script is:inline>
     const button = document.getElementById('buttonTop');
-
-    window.addEventListener('scroll', () => {
+    
+    const toggleButtonVisibility = () => {
         if (window.scrollY > 100) {
             button.classList.remove('hidden');
+            button.classList.add('flex');
         } else {
+            button.classList.remove('flex');
             button.classList.add('hidden');
         }
-    });
+    };
+
+    window.addEventListener('scroll', toggleButtonVisibility);
+    window.addEventListener('resize', toggleButtonVisibility);
+    document.addEventListener('DOMContentLoaded', toggleButtonVisibility);
 
     button.addEventListener('click', () => {
         window.scrollTo({

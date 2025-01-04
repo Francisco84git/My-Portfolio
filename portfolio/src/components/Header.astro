@@ -17,7 +17,7 @@ const linkList = [
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <Logo />
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <button type="button" class="flex items-center text-white bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"><span class="ml-2">Contacto</span> <ChevronRight /></button>
+        <a href="/contact" type="button" class="flex items-center text-white bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"><span class="ml-2">Contacto</span> <ChevronRight /></a>
 
         <button id="menuButton" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden">
             <span class="sr-only">Open main menu</span>
@@ -37,10 +37,12 @@ const linkList = [
 </header>
 
 <script>
-    const menuButton = document.getElementById('menuButton') as HTMLButtonElement;
-    const navbar = document.getElementById('navbar') as HTMLElement;
+    document.addEventListener('astro:page-load', () => {
+        const menuButton = document.getElementById('menuButton') as HTMLButtonElement;
+        const navbar = document.getElementById('navbar') as HTMLElement;
 
-    menuButton.addEventListener('click', () => {
-        navbar.classList.toggle('hidden');
+        menuButton.addEventListener('click', () => {
+            navbar.classList.toggle('hidden');
+        });
     });
 </script>
