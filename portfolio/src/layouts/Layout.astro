@@ -2,6 +2,7 @@
 import '@fontsource-variable/onest';
 import Header from "../components/Header.astro";
 import Footer from '../components/Footer.astro';
+import ButtonTop from '../components/ButtonTop.astro';
 ---
 
 <!doctype html>
@@ -19,20 +20,25 @@ import Footer from '../components/Footer.astro';
 			<slot />
 		</main>
 		<Footer />
+		<ButtonTop />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	html {
+		scroll-behavior: smooth;
+	}
+
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		min-height: 100vh;
-		background-color: #e0e0e0;
 		font-family: 'Onest Variable', sans-serif;
 		display: flex;
 		flex-direction: column;
 	}
+	
 	body::-webkit-scrollbar {
 		width: 0.625rem;
 	}

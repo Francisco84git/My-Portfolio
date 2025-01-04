@@ -1,0 +1,54 @@
+---
+interface Pregunta {
+  pregunta: string
+  respuesta: string
+}
+
+const PREGUNTAS: Pregunta[] = [
+  {
+    pregunta: "¿Qué es un portafolio?",
+    respuesta: "Un portafolio es una colección de trabajos o muestras de un artista, diseñador, fotógrafo, etc., que se muestra a posibles empleadores o clientes."
+  },
+  {
+    pregunta: "¿Qué es un portafolio digital?",
+    respuesta: "Un portafolio digital es una versión en línea de un portafolio físico. Es una forma de mostrar tus trabajos en la web."
+  },
+  {
+    pregunta: "¿Por qué necesito un portafolio?",
+    respuesta: "Un portafolio es una excelente manera de mostrar tus habilidades y experiencias a posibles empleadores o clientes. Es una forma de demostrar lo que puedes hacer."
+  },
+  {
+    pregunta: "¿Qué debo incluir en mi portafolio?",
+    respuesta: "Debes incluir tus mejores trabajos, tus habilidades y experiencias. También puedes incluir información sobre ti, como tu educación, experiencia laboral, etc."
+  },
+  {
+    pregunta: "¿Cómo puedo hacer un portafolio?",
+    respuesta: "Puedes hacer un portafolio de muchas maneras. Puedes usar una plantilla en línea, un generador de portafolios o hacerlo desde cero. Lo importante es que muestres tus trabajos de la mejor manera posible."
+  }
+]
+---
+
+<div id="faq-accordion" class="w-full border border-gray-200 rounded-md">
+  {
+    PREGUNTAS.map((pregunta, index) => (
+      <details class="border-b border-gray-200 group">
+        <summary class="flex items-center justify-between px-4 py-5 text-left cursor-pointer focus:outline-none group-hover:bg-gray-100">
+          <span class="text-slate-900 mr-4 text-wrap">{pregunta.pregunta}</span>
+          <svg
+            class="w-5 h-5 z-30 text-slate-500 transition-transform transform group-open:rotate-180"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="px-4 py-5 text-slate-500 text-wrap">
+          {pregunta.respuesta}
+        </div>
+      </details>
+    ))
+  }
+</div>

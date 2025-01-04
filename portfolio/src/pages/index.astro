@@ -1,7 +1,134 @@
 ---
+import Hero from '../components/Hero.astro';
+import LayoutSection from '../components/LayoutSection.astro';
 import Layout from '../layouts/Layout.astro';
+import Banner from '../components/Banner.astro';
+import Experiencia from '../components/Experiencia.astro';
+import CardProjects from '../components/CardProjects.astro';
+import TitleSeparator from '../components/TitleSeparator.astro';
+import ShortTitle from '../components/ShortTitle.astro';
+import CardCertification from '../components/CardCertification.astro';
+
+import AnaliticsIcon from '../components/icons/Analitics.astro';
+import AstroIcon from '../components/icons/AstroI.astro';
+import FrontendIcon from '../components/icons/Frontend.astro';
+import TailwindIcon from '../components/icons/TailwindI.astro';
+import TypescriptIcon from '../components/icons/TypescriptI.astro';
+import PHPIcon from '../components/icons/PHP.astro';
+import ProgramationIcon from '../components/icons/Programation.astro';
+import Faq from '../components/Faq.astro';
+
+
+const CERTIFICATIONS = [{
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: AnaliticsIcon
+}, {
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: ProgramationIcon
+}, {
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: PHPIcon
+}, {
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: FrontendIcon
+}, {
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: AstroIcon
+}, {
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: TypescriptIcon
+}, {
+    title: 'Bring Your Own Framework',
+    description: 'Build your site using React, Svelte, Vue, Preact, web components, or just plain ol\' HTML + JavaScript.',
+    Icon: TailwindIcon
+}];
+
+const PROJECTS = [{
+    image: 'edteam.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Modern Design',
+    description: 'Feeling old? Try this template and be a part of the modern design.',
+    url: 'https://ed.team'
+}, {
+    image: 'microsoft.webp',
+    tags: ['HTML', 'CSS'],
+    title: 'Modern Design',
+    description: 'Feeling old? Try this template and be a part of the modern design.',
+    url: 'https://microsoft.com'
+}, {
+    image: 'servicios.webp',
+    tags: ['HTML', 'CSS'],
+    title: 'Modern Design',
+    description: 'Feeling old? Try this template and be a part of the modern design.',
+    url: 'https://servicios.com'
+}, {
+    image: 'tienda.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Modern Design',
+    description: 'Feeling old? Try this template and be a part of the modern design.',
+    url: 'https://tienda.com'
+}, {
+    image: 'travel.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Modern Design',
+    description: 'Feeling old? Try this template and be a part of the modern design.',
+    url: 'https://travel.com'
+}, {
+    image: 'youtube.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Modern Design',
+    description: 'Feeling old? Try this template and be a part of the modern design.',
+    url: 'https://youtube.com'
+}]
 ---
 
-<Layout>
-	
+<Layout>   
+    <div class="py-32"> 
+        <LayoutSection styles="lg:grid-cols-5">
+            <Hero />
+        </LayoutSection>
+    </div>
+
+    <Banner />
+
+    <div class="py-32"> 
+        <TitleSeparator title="Everything you need to" color="start a website" paragraph="Astro comes batteries included. It takes the best parts of state-of-the-art tools and adds its own innovations." />
+        <LayoutSection styles="md:grid-cols-2 lg:grid-cols-2">
+            <Experiencia />
+        </LayoutSection>
+    </div>
+    
+    <div class="bg-gray-200 py-32">
+        <TitleSeparator title="Everything you need to" color="start a website" paragraph="Astro comes batteries included. It takes the best parts of state-of-the-art tools and adds its own innovations." />
+        <LayoutSection styles="sm:grid-cols-2 md:grid-cols-3 gap-10 ">
+            {
+                PROJECTS.map(project => (
+                    <CardProjects url={project.url} image={project.image} tags={project.tags} title={project.title} description={project.description} />
+                ))
+            }
+        </LayoutSection>
+    </div>
+
+    <div class="py-32 bg-violet-200">
+        <ShortTitle title="We've got you covered" description="Our template covers all things SAAS. If you don't find what you're looking for, contact us and we'll either help you or steer you in the right direction." estilos="text-violet-900"/>
+        <LayoutSection styles="sm:grid-cols-2 md:grid-cols-3 mt-16 gap-8 md:gap-16">
+            {CERTIFICATIONS.map(certification => (
+                <CardCertification title={certification.title} description={certification.description} Icon={certification.Icon}/>
+            ))}
+        </LayoutSection>
+    </div>
+
+    <div class="py-32 bg-white">
+        <ShortTitle title="We've got you covered" description="Our template covers all things SAAS. If you don't find what you're looking for, contact us and we'll either help you or steer you in the right direction." estilos="text-slate-900"/>
+        <LayoutSection>
+            <Faq />
+        </LayoutSection>
+    </div>
+    
 </Layout>

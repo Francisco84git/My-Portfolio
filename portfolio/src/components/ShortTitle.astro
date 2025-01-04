@@ -1,0 +1,12 @@
+---
+const { title, description, estilos } = Astro.props;
+---
+
+<div class={`max-w-3xl mx-auto flex flex-col items-center justify-center mb-24 px-5 ${estilos}`}>
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center">
+        {title}
+    </h2>
+    <p class="text-lg mt-4 text-center [text-wrap:pretty]">
+        {description}
+    </p>
+</div>

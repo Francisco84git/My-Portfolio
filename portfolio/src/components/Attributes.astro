@@ -1,0 +1,9 @@
+---
+import Check from "./icons/Check.astro";
+const { title } = Astro.props;
+---
+
+<li class="flex items-center gap-3 text-neutral-800">
+    <Check />
+    <span class="text-sm">{title}</span>
+</li>

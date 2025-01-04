@@ -1,0 +1,26 @@
+---
+import ChevronUp from "./icons/ChevronUp.astro";
+---
+
+<button id="buttonTop" class="bg-violet-600 text-white fixed bottom-8 right-8 rounded-full shadow-lg w-16 h-16 flex items-center justify-center hover:bg-violet-800 transition-transform transform hover:scale-105 z-40">
+    <ChevronUp />
+</button>
+
+<script is:inline>
+    const button = document.getElementById('buttonTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            button.classList.remove('hidden');
+        } else {
+            button.classList.add('hidden');
+        }
+    });
+
+    button.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>

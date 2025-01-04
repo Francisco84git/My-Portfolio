@@ -1,0 +1,13 @@
+---
+const { title, color , paragraph } = Astro.props;
+---
+<div class="max-w-screen-xl mx-auto px-5">
+    <div class="mb-12">
+        <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+            {title} <span class="text-indigo-600">{color}</span> 
+        </h2> 
+        <p class="text-lg mt-4 text-slate-600">
+            {paragraph}
+        </p>
+    </div>
+</div>
