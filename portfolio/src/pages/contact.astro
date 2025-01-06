@@ -2,12 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import LayoutSection from "../components/LayoutSection.astro";
 import Hero from "../components/Hero.astro";
+import FormContact from "../components/FormContact.astro";
 ---
 
 <Layout title="Contact">
-    <div class="py-32"> 
-        <LayoutSection styles="lg:grid-cols-5">
-            <Hero title="Create websites with Astroship" description="Pro version of popular Astroship starter template made for startups. Built with Astro  and Tailwind CSS" />
+    <div class="py-24 bg-gray-200"> 
+        <LayoutSection>
+            <FormContact />
         </LayoutSection>
     </div>
 </Layout>
