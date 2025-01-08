@@ -2,9 +2,9 @@
 const { title, description } = Astro.props;
 ---
 
-<section class="max-w-sm md:max-w-max lg:col-span-2 pr-4">
-    <h1 class="text-3xl lg:text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter [text-wrap:balance] text-center lg:text-start">{title}</h1>
-    <p class="text-lg mt-4 max-w-lg text-slate-600 [text-wrap:balance] text-center lg:text-start">{description}</p>
+<section class="lg:col-span-2 pr-4">
+    <h1 class="text-4xl xl:text-6xl font-bold lg:tracking-tight xl:tracking-tighter [text-wrap:balance] text-center lg:text-start">{title}</h1>
+    <p class="text-lg mt-8 w-full lg:max-w-lg text-slate-600 [text-wrap:balance] text-center lg:text-start">{description}</p>
 </section>
 <section class="pt-16 lg:col-span-3">
     <img src="/hero.webp" />

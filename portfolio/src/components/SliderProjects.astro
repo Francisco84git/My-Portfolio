@@ -1,0 +1,156 @@
+---
+import NextIcon from "./icons/Next.astro";
+import PreviousIcon from "./icons/Previous.astro";
+
+const TAGS = [
+  {
+    name: 'Typescript',
+    text: 'text-[#3178C6]', // Azul oficial de TypeScript
+  },
+  {
+    name: 'Astro',
+    text: 'text-[#FF5D01]', // Naranja característico de Astro
+  },
+  {
+    name: 'PHP',
+    text: 'text-[#4F5D95]', // Azul oscuro oficial de PHP
+  },
+  {
+    name: 'HTML',
+    text: 'text-[#E34F26]', // Naranja oficial de HTML
+  },
+  {
+    name: 'CSS',
+    text: 'text-[#1572B6]', // Azul oficial de CSS
+  },
+  {
+    name: 'Javascript',
+    text: 'text-[#FFB81C]', // Amarillo oficial de JS
+  },
+];
+
+const PROJECTS = [{
+    image: 'edteam.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Venta de Cursos Online',
+    description: 'Plataforma intuitiva que facilita la compra de cursos, asegurando una experiencia de usuario fluida y efectiva.',
+    url: 'https://ed.team'
+}, {
+    image: 'microsoft.webp',
+    tags: ['HTML', 'CSS'],
+    title: 'Landing Page de Microsoft',
+    description: 'Landing optimizada para captar atención y convertir visitantes rápidamente.',
+    url: 'https://microsoft.com'
+}, {
+    image: 'servicios.webp',
+    tags: ['HTML', 'CSS'],
+    title: 'Ventas de Servicios Online',
+    description: 'Página diseñada para maximizar conversiones con un enfoque claro en la confianza y la acción.',
+    url: 'https://servicios.com'
+}, {
+    image: 'tienda.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Landing Page de Producto',
+    description: 'Página optimizada para mostrar un producto y facilitar la compra con información clave y clara.',
+    url: 'https://tienda.com'
+}, {
+    image: 'travel.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Portafolio de Viajes por el Mundo',
+    description: 'Portafolio visualmente atractivo que convierte curiosos en seguidores leales.',
+    url: 'https://travel.com'
+}, {
+    image: 'youtube.webp',
+    tags: ['HTML', 'CSS', 'Javascript', 'PHP'],
+    title: 'Ventas para Restaurante',
+    description: 'Página diseñada para facilitar pedidos con un enfoque visual atractivo y proceso sencillo.',
+    url: 'https://youtube.com'
+}]
+---
+
+<div class="w-full relative grid grid-cols-5">
+
+  <div id="carouselExampleCaptions" class="relative overflow-hidden rounded-lg col-span-5 lg:col-start-2 lg:col-end-5" data-twe-carousel-init data-twe-ride="carousel">
+    <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+      {
+        PROJECTS.map((project, i) => (
+          <div
+            class={`relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none ${i != 0 ? 'hidden' : ''}`}
+            data-twe-carousel-active={i == 0 ? true : undefined}
+            data-twe-carousel-item
+            style="backface-visibility: hidden">
+            <img
+              src={`/projects/${project.image}`}
+              class="block w-full"
+              alt={project.title} />
+          </div>
+        ))
+      }
+    </div>
+  
+    <button id="prevButton" class="lg:hidden absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/30 hover:bg-black/20 text-white p-3 rounded-full mx-4">
+      <PreviousIcon />
+    </button>
+    <button id="nextButton" class="lg:hidden absolute top-1/2 right-0 transform -translate-y-1/2 bg-black/30 hover:bg-black/20 text-white p-3 rounded-full mx-4">
+      <NextIcon />
+    </button>
+  </div>
+
+  <button id="prevBoton" class="hidden lg:block absolute top-1/2 left-0 transform -translate-y-1/2 text-black/30 hover:text-black/20 py-2 pr-4">
+    <PreviousIcon />
+  </button>
+  <button id="nextBoton" class="hidden lg:block absolute top-1/2 right-0 transform -translate-y-1/2 text-black/30 hover:text-black/20 py-2 pl-4">
+    <NextIcon />
+  </button>
+  
+</div>
+
+<div class="mt-2 w-full">
+  {
+    PROJECTS.map((project, i) => (
+      <div class={`project-info text-center px-4 py-4 mt-8 ${i != 0 ? 'hidden' : ''}`} data-project-info={i}>
+        <h2 class="text-3xl lg:text-4xl font-bold text-yellow-500">{project.title}</h2>
+        <p class="mt-4 text-gray-600/70 italic">{project.description}</p>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const slides = document.querySelectorAll('[data-twe-carousel-item]');
+        const projectInfos = document.querySelectorAll('[data-project-info]');
+        const prevButton = document.getElementById('prevButton') as HTMLButtonElement;
+        const nextButton = document.getElementById('nextButton')as HTMLButtonElement;
+        const prevBoton = document.getElementById('prevBoton') as HTMLButtonElement;
+        const nextBoton = document.getElementById('nextBoton')as HTMLButtonElement;
+        let currentIndex = 0;
+
+        function showSlide(index: number) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('hidden', i !== index);
+            });
+            projectInfos.forEach((info, i) => {
+                info.classList.toggle('hidden', i !== index);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        nextBoton.addEventListener('click', nextSlide);
+        prevBoton.addEventListener('click', prevSlide);
+
+        setInterval(nextSlide, 3000); // Cambia de imagen cada 3 segundos
+    });
+</script>

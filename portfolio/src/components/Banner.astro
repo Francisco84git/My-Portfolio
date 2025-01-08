@@ -1,16 +1,28 @@
-<div class="bg-gradient-to-bl from-indigo-900 to-indigo-700 p-8 md:px-20 md:py-20 mt-20 flex flex-col items-center text-center"> 
-    <h2 class="tracking-tight">
-        <span class="text-white uppercase text-4xl md:text-3xl block mb-6">
-            ¿Cansado de perder clientes porque no encuentran tu negocio online?
-        </span>
-        <span class="text-yellow-500 text-2xl md:text-2xl block mb-16">
-            No tener una página web te está dejando atras.
+---
+import ContactIcon from "./icons/Contact.astro";
+---
+
+<div class="bg-gradient-to-bl from-indigo-900 to-indigo-700 p-8 md:px-20 md:py-20 flex flex-col items-center text-center"> 
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+        <span class="text-white block font-bold">
+            Tus clientes están buscando soluciones online
         </span>
     </h2> 
-   
-    <p class="text-white/70 mt-4 text-lg md:text-xl">No dejes que tu negocio quede atrás. Una web profesional te asegura estar un paso adelante de tus competidores.</p> 
+
+    <div class="my-12">
+        <span class="text-yellow-300 text-2xl md:text-2xl block">
+            ¿Te están encontrando a ti o a tu competencia? 
+        </span>
+    
+        <p class="text-white/70 text-base mt-4">
+            No permitas que la falta de presencia digital sea el obstáculo para el crecimiento de tu negocio. Con una página web estratégica, destacarás, conectarás y convertirás. El momento de tomar acción es ahora.
+        </p> 
+    </div>
     
     <div class="flex mt-5"> 
-        <a href="/contact" class="rounded-full text-center transition focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 focus-visible:outline-none focus-visible:shadow-outline-indigo px-7 py-2.5 bg-white text-indigo-800 border-2 border-transparent">Empieza a destacar ahora</a> 
+        <a href="/contact" class="text-indigo-500 bg-gray-100 hover:bg-white focus:ring-4 focus:outline-none focus:ring-gray-100/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+            <ContactIcon />
+            Contactar ahota
+        </a>
     </div> 
 </div>

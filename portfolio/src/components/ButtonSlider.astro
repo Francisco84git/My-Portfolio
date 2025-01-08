@@ -1,0 +1,12 @@
+---
+const { type, id, Icon, styles } = Astro.props;
+--- 
+
+{type == "sm" ?
+    <button id={id} class={`lg:hidden absolute top-1/2 left-0 transform -translate-y-1/2 bg-indigo-500 text-white p-3 rounded-full mx-4 ${styles}`} >
+      <Icon />
+    </button> :
+    <button id="prevBoton" class={`hidden lg:block absolute top-1/2 left-0 transform -translate-y-1/2 text-gray-500 p-5 ${styles}`}>
+        <Icon />
+    </button>
+}

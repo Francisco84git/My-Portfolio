@@ -1,5 +1,6 @@
 ---
 import Attributes from "./Attributes.astro";
+import ContactIcon from "./icons/Contact.astro";
 
 const attributes = ['Impacto inmediato', 'Crecimiento sostenible', 'Diseños personalizados', 'Optimización continua', 'Velocidad de entrega', 'Experiencia intuitiva', 'Alta conversión', 'Mayor posicionamiento'];
 ---
@@ -28,5 +29,12 @@ const attributes = ['Impacto inmediato', 'Crecimiento sostenible', 'Diseños per
                 ))
             }
         </ul>
+
+        <section class="flex items-center mt-14 justify-center md:justify-start">
+            <a href="/contact" class="text-white bg-yellow-500 hover:bg-yellow-500/80 focus:ring-4 focus:outline-none focus:ring-yellow-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2">
+                <ContactIcon />
+                Contactar ahota
+            </a>
+        </section>
     </div>
 </div>

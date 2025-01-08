@@ -1,31 +1,33 @@
 ---
-import ChevronRight from "./icons/ChevronRight.astro";
 import Logo from "./Logo.astro";
 import Menu from "./icons/Menu.astro";
 import Link from "./LinksHeader.astro";
+import ContactIcon from "./icons/Contact.astro";
 
 const linkList = [
     { title: 'Inicio', href: '/#inicio' },
     { title: 'Experiencia', href: '/#experiencia' },
     { title: 'Proyectos', href: '/#proyectos' },
-    { title: 'Certificaciones', href: '/#certificaciones' },
     { title: 'Preguntas', href: '/#preguntas' },
+    { title: 'Certificaciones', href: '/#certificaciones'  },
 ];
 ---
 
-<header class="bg-white border-gray-200 dark:bg-gray-900 sticky top-0 z-50">
+<header class="bg-white border-gray-200 sticky top-0 z-50">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <Logo />
     <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-        <a href="/contact" type="button" class="flex items-center text-white bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800"><span class="ml-2">Contacto</span> <ChevronRight /></a>
+        <a href="/contact" class="text-white bg-indigo-500 hover:bg-indigo-500/80 focus:ring-4 focus:outline-none focus:ring-indigo-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
+            <ContactIcon />
+            Contactar
+        </a>
 
         <button id="menuButton" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden">
-            <span class="sr-only">Open main menu</span>
             <Menu />
         </button>
     </div>
     <nav class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar">
-        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
             {
                 linkList.map(list => (
                     <Link title={list.title} href={list.href} />
@@ -43,6 +45,15 @@ const linkList = [
 
         menuButton.addEventListener('click', () => {
             navbar.classList.toggle('hidden');
+        });
+
+        const navLinks = navbar.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) { 
+                        navbar.classList.add('hidden');
+                    }
+            });
         });
     });
 </script>

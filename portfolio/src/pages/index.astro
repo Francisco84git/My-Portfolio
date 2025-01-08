@@ -4,10 +4,11 @@ import LayoutSection from '../components/LayoutSection.astro';
 import Layout from '../layouts/Layout.astro';
 import Banner from '../components/Banner.astro';
 import Experiencia from '../components/Experiencia.astro';
-import CardProjects from '../components/CardProjects.astro';
+import SliderProjects from '../components/SliderProjects.astro';
 import TitleSeparator from '../components/TitleSeparator.astro';
 import ShortTitle from '../components/ShortTitle.astro';
 import CardCertification from '../components/CardCertification.astro';
+import Information from '../components/Information.astro';
 
 import AnaliticsIcon from '../components/icons/Analitics.astro';
 import AstroIcon from '../components/icons/AstroI.astro';
@@ -18,6 +19,36 @@ import PHPIcon from '../components/icons/PHP.astro';
 import ProgramationIcon from '../components/icons/Programation.astro';
 import Faq from '../components/Faq.astro';
 
+import CopywritingIcon from '../components/icons/Copywriting.astro';
+import MockupIcon from '../components/icons/Mockup.astro';
+import SeoIcon from '../components/icons/Seo.astro';
+import ResponsiveIcon from '../components/icons/Responsive.astro';
+import SupportIcon from '../components/icons/Support.astro'
+
+const INFORMATION = [
+  {
+    title: 'Copywriting Persuasivo',
+    description: 'Textos que hanlan directamente al corazón de tus cientes.',
+    Icon: CopywritingIcon
+}, {
+    title: 'Mockups Personalizados',
+    description: 'Cada mockup refleja el alma de tu negocio, destacando de la competencia.',
+    Icon: MockupIcon
+}, {
+    title: 'Optimización para SEO',
+    description: 'Estructura para que seas la primera opción de tus clientes.',
+    Icon: SeoIcon
+}, {
+    title: 'Diseño Responsive',
+    description: 'Diseño que asegura que tu página se vea impecable y funcional en cualquier pantalla, sin excepciones.',
+    Icon: ResponsiveIcon
+}
+, {
+    title: 'Soporte Integral',
+    description: 'Me aseguro de que siempre funcione perfectamente. Mientras tu te encargas de tu negocio.',
+    Icon: SupportIcon
+}
+]
 
 const CERTIFICATIONS = [{
     title: ' Analista de Sistemas – Instituto del Milagro',
@@ -48,56 +79,26 @@ const CERTIFICATIONS = [{
     description: 'Conozco TypeScript a fondo, asegurando código seguro y escalable para proyectos serios.',
     Icon: TypescriptIcon
 }];
-
-const PROJECTS = [{
-    image: 'edteam.webp',
-    tags: ['HTML', 'CSS', 'Javascript'],
-    title: 'Venta de Cursos Online',
-    description: 'Plataforma intuitiva que facilita la compra de cursos, asegurando una experiencia de usuario fluida y efectiva.',
-    url: 'https://ed.team'
-}, {
-    image: 'microsoft.webp',
-    tags: ['HTML', 'CSS'],
-    title: 'Landing Page de Microsoft',
-    description: 'Landing optimizada para captar atención y convertir visitantes rápidamente.',
-    url: 'https://microsoft.com'
-}, {
-    image: 'servicios.webp',
-    tags: ['HTML', 'CSS'],
-    title: 'Página de Ventas de Servicios Online',
-    description: 'Página diseñada para maximizar conversiones con un enfoque claro en la confianza y la acción.',
-    url: 'https://servicios.com'
-}, {
-    image: 'tienda.webp',
-    tags: ['HTML', 'CSS', 'Javascript'],
-    title: 'Landing Page de Producto',
-    description: 'Página optimizada para mostrar un producto y facilitar la compra con información clave y clara.',
-    url: 'https://tienda.com'
-}, {
-    image: 'travel.webp',
-    tags: ['HTML', 'CSS', 'Javascript'],
-    title: 'Portafolio de Viajes por el Mundo',
-    description: 'Portafolio visualmente atractivo que convierte curiosos en seguidores leales.',
-    url: 'https://travel.com'
-}, {
-    image: 'youtube.webp',
-    tags: ['HTML', 'CSS', 'Javascript', 'PHP'],
-    title: 'Página de Ventas para Restaurante',
-    description: 'Página diseñada para facilitar pedidos con un enfoque visual atractivo y proceso sencillo.',
-    url: 'https://youtube.com'
-}]
 ---
 
 <Layout>   
-    <div class="py-32" id="inicio"> 
+    <div class="pt-24 pb-6" id="inicio"> 
         <LayoutSection styles="lg:grid-cols-5">
             <Hero title="Desarrollo de páginas web profesionales para hacer crecer tu negocio" description="Con una web diseñada para destacar, atraerás clientes y dominarás tu sector. No te quedes atrás." />
+        </LayoutSection>  
+    </div>
+
+    <div class="py-16">
+        <LayoutSection styles="md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 items-stretch">
+            {
+                INFORMATION.map(information => (
+                    <Information title={information.title} description={information.description} Icon={information.Icon} />
+                ))
+            }
         </LayoutSection>
     </div>
 
-    <Banner />
-
-    <div class="py-32" id="experiencia"> 
+    <div class="py-24" id="experiencia"> 
         <TitleSeparator title="Diseños que hablan el idioma del " color="éxito de tu marca" paragraph="Un diseño que refleja la esencia de tu marca, atrae a tu público y convierte visitas en clientes. Tu éxito empieza con una presencia digital impactante." />
         <LayoutSection styles="md:grid-cols-2 lg:grid-cols-2 items-stretch">
             <Experiencia />
@@ -106,17 +107,20 @@ const PROJECTS = [{
     
     <div class="bg-gray-200 py-32" id="proyectos">
         <TitleSeparator title="Proyectos que convierten " color="visitantes en clientes" paragraph="Cada uno de estos proyectos está diseñado para generar resultados. Funcionalidad, diseño innovador y conversión efectiva son las claves que definen mi trabajo." />
-        <LayoutSection styles="sm:grid-cols-2 md:grid-cols-3 gap-10 items-stretch ">
-            {
-                PROJECTS.map(project => (
-                    <CardProjects url={project.url} image={project.image} tags={project.tags} title={project.title} description={project.description} />
-                ))
-            }
+        <LayoutSection>
+            <SliderProjects />
         </LayoutSection>
     </div>
 
-    <div class="py-32 bg-violet-200" id="certificaciones">
-        <ShortTitle title="Formación y experiencia que respaldan tu confianza" description="Cada conocimiento que tengo está enfocado en lo que tu negocio necesita para destacar. Estoy preparado para superar tus expectativas y llevar tu marca al siguiente nivel." estilos="text-violet-900"/>
+    <div class="py-24 bg-white" id="preguntas">
+        <ShortTitle title="Dar el paso puede generar dudas..." description="Aquí te respondo las preguntas más comunes para que te sientas completamente tranquilo al elegir mis servicios. Tu éxito está a solo un clic de distancia." estilos="text-slate-900"/>
+        <LayoutSection>
+            <Faq />
+        </LayoutSection>
+    </div>
+
+    <div class="py-24 bg-indigo-100" id="certificaciones">
+        <ShortTitle title="Formación y experiencia que respaldan tu confianza" description="Cada conocimiento que tengo está enfocado en lo que tu negocio necesita para destacar. Estoy preparado para superar tus expectativas y llevar tu marca al siguiente nivel."/>
         <LayoutSection styles="sm:grid-cols-2 md:grid-cols-3 mt-16 gap-8 lg:gap-16 items-stretch">
             {CERTIFICATIONS.map(certification => (
                 <CardCertification title={certification.title} description={certification.description} Icon={certification.Icon}/>
@@ -124,11 +128,6 @@ const PROJECTS = [{
         </LayoutSection>
     </div>
 
-    <div class="py-32 bg-white" id="preguntas">
-        <ShortTitle title="Dar el paso puede generar dudas..." description="Aquí te respondo las preguntas más comunes para que te sientas completamente tranquilo al elegir mis servicios. Tu éxito está a solo un clic de distancia." estilos="text-slate-900"/>
-        <LayoutSection>
-            <Faq />
-        </LayoutSection>
-    </div>
-    
+    <Banner />
 </Layout>
+

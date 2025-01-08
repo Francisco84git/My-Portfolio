@@ -1,0 +1,8 @@
+---
+const { styles } = Astro.props;
+---
+<div class=`flex items-center justify-center h-full absolute top-0 ${styles}`>
+    <button class="mx-4 sm:mx-8 md:mx-12 bg-rose-700 rounded-full z-[1] flex size-16 items-center justify-center border-0 text-center text-white" type="button">
+        <slot />
+    </button>
+</div>

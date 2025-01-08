@@ -1,35 +1,130 @@
+---
+import WorkIcon from "./icons/Work.astro";
+---
+
 <div class="px-4 py-10 md:px-10 md:py-16 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 w-full">
-    <h1 class="text-center mb-16 text-3xl lg:text-4xl xl:text-6xl font-semibold">
-        Dime lo que necesitas, <span class="block text-indigo-500">y lo haré realidad</span>
-    </h3>
+    <h1 class="text-center mb-16 text-3xl md:text-5xl xl:text-6xl font-semibold">
+        Dime lo que necesitas, 
+        <span class="block text-indigo-500">y lo haré realidad</span>
+    </h1>
 
-    <form action="#">
+    <form id="contactForm" class="w-full max-w-[800px] mx-auto">
         <div class="grid grid-cols-6 gap-6">
-
             <div class="col-span-6 sm:col-span-3">
                 <label for="email" class="block mb-2 text-sm font-bold text-gray-900">
-                    Email
+                    Correo Electrónico
                 </label>
-                <input type="text" name="email" id="email" class="outline-none shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="josemartinez9816@gmail.com" required="">
+                <input type="text" name="email" id="email" class="outline-none shadow-sm bg-gray-50 border-2 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="josemartinez9816@gmail.com" required="">
+                <p id="emailError" class="text-red-500 text-xs mt-1 font-bold hidden">El correo electrónico debe tener un formato válido como ejemplo@dominio.com.</p>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="name" class="block mb-2 text-sm font-bold text-gray-900">
                     Nombre Completo
                 </label>
-                <input type="text" name="name" id="name" class="outline-none shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="José Daniel Martinez" required="">
+                <input type="text" name="name" id="name" class="outline-none shadow-sm bg-gray-50 border-2 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="José Daniel Martinez" required="">
+                <p id="nameError" class="text-red-500 text-xs mt-1 font-bold hidden">Solo se permiten letras y espacios en el nombre.</p>
             </div>
-            <div class="col-span-6 sm:col-span-3">
+            <div class="col-span-6 sm:col-span-6">
                 <label for="help" class="block mb-2 text-sm font-bold text-gray-900">
-                    En que puedo ayudarte
+                    Cuéntame sobre tu proyecto
                 </label>
-                <input type="text" name="help" id="help" class="outline-none shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5" placeholder="Estoy interesado en realizar una web para escalar mi empresa" required="">
+                <textarea id="help" rows="4" class="outline-none block p-2.5 w-full sm:text-sm text-gray-900 bg-gray-50 rounded-lg border-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="¿Necesitas una web profesional que atraiga más clientes? Escríbeme tus necesidades aquí." required></textarea>
+                <p id="helpError" class="text-red-500 text-xs mt-1 font-bold hidden">El mensaje debe tener al menos 10 caracteres.</p>
             </div>
 
-            <div class="col-span-6 sm:col-full mt-10">
-                <button class="text-white font-medium bg-indigo-700 hover:bg-indigo-800 rounded-lg text-sm px-5 py-2.5 text-center" type="submit">
-                    Comenzar ahora
+            <div class="col-span-6 sm:col-full mt-10 flex justify-center items-center">
+                <button class="text-white bg-yellow-500 hover:bg-yellow-500/80 focus:ring-4 focus:outline-none focus:ring-yellow-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2" type="submit">
+                    <WorkIcon />
+                    A trabajar
                 </button>
             </div>
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const form = document.getElementById('contactForm') as HTMLFormElement;
+        const emailInput = document.getElementById('email') as HTMLInputElement;
+        const nameInput = document.getElementById('name') as HTMLInputElement;
+        const helpInput = document.getElementById('help') as HTMLInputElement;
+
+        const emailError = document.getElementById('emailError') as HTMLElement;
+        const nameError = document.getElementById('nameError') as HTMLElement;
+        const helpError = document.getElementById('helpError') as HTMLElement;
+
+        function validateEmail() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailInput.value)) {
+                emailInput.classList.add('border-red-500');
+                emailInput.classList.remove('focus:border-indigo-500');
+                emailError.classList.remove('hidden');
+                return false;
+            } else {
+                emailInput.classList.remove('border-red-500');
+                emailInput.classList.add('focus:border-indigo-500');
+                emailError.classList.add('hidden');
+                return true;
+            }
+        }
+
+        function validateName() {
+            const nameRegex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]{2,}(?: [A-Za-zÁÉÍÓÚáéíóúÑñ]{2,})+$/;
+            if (!nameRegex.test(nameInput.value)) {
+                nameInput.classList.add('border-red-500');
+                nameInput.classList.remove('focus:border-indigo-500');
+                nameError.classList.remove('hidden');
+                return false;
+            } else {
+                nameInput.classList.remove('border-red-500');
+                nameInput.classList.add('focus:border-indigo-500');
+                nameError.classList.add('hidden');
+                return true;
+            }
+        }
+
+        function validateHelp() {
+            const helpRegex = /^[\s\S]{10,1000}$/;
+            if (!helpRegex.test(helpInput.value)) {
+                helpInput.classList.add('border-red-500');
+                helpInput.classList.remove('focus:border-indigo-500');
+                helpError.classList.remove('hidden');
+                return false;
+            } else {
+                helpInput.classList.remove('border-red-500');
+                helpInput.classList.add('focus:border-indigo-500');
+                helpError.classList.add('hidden');
+                return true;
+            }
+        }
+
+        emailInput.addEventListener('input', validateEmail);
+        emailInput.addEventListener('blur', validateEmail);
+
+        nameInput.addEventListener('input', validateName);
+        nameInput.addEventListener('blur', validateName);
+
+        helpInput.addEventListener('input', validateHelp);
+        helpInput.addEventListener('blur', validateHelp);
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const isEmailValid = validateEmail();
+            const isNameValid = validateName();
+            const isHelpValid = validateHelp();
+
+            if (isEmailValid && isNameValid && isHelpValid) {
+                // Enviar el formulario a un correo personal
+                // Aquí puedes usar un servicio de backend como EmailJS para enviar el correo
+                // Ejemplo:
+                // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+                //     .then(() => {
+                //         alert('Mensaje enviado!');
+                //     }, (error) => {
+                //         alert('Error al enviar el mensaje: ' + error.text);
+                //     });
+                alert('Formulario enviado correctamente!');
+            }
+        });
+    });
+</script>

@@ -2,16 +2,16 @@
 const { title, description, Icon } = Astro.props;
 ---
 
-<div class="flex flex-col gap-4 items-start group bg-white rounded-lg transition-all p-5 hover:outline hover:outline-indigo-600">
-    <div class="mt-1 bg-indigo-900 text-white border shadow shadow-indigo-100/50 border-indigo-100  rounded-lg grid place-items-center p-2 w-10 h-10 shrink-0">
+<div class="flex flex-col gap-4 items-start group bg-white rounded-lg transition-all p-5 cursor-default hover:scale-105">
+    <div class="mt-1 bg-indigo-700 text-white border shadow shadow-indigo-100/50 border-rose-100  rounded-lg grid place-items-center p-2 w-10 h-10 shrink-0">
         <Icon />
     </div>
     <div>
         <h3 class="font-semibold text-lg">
-            <span class="text-violet-900">{title}</span>
+            <span>{title}</span>
         </h3>
         <p class=" mt-2 leading-relaxed">
-            <span class="text-violet-900">{description}</span>
+            <span>{description}</span>
         </p>
     </div>
 </div>
