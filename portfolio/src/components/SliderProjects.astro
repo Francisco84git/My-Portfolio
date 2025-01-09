@@ -34,37 +34,37 @@ const PROJECTS = [{
     tags: ['HTML', 'CSS', 'Javascript'],
     title: 'Venta de Cursos Online',
     description: 'Plataforma intuitiva que facilita la compra de cursos, asegurando una experiencia de usuario fluida y efectiva.',
-    url: 'https://ed.team'
+    url: 'https://celadon-frangipane-9c973c.netlify.app/'
 }, {
-    image: 'microsoft.webp',
-    tags: ['HTML', 'CSS'],
-    title: 'Landing Page de Microsoft',
-    description: 'Landing optimizada para captar atención y convertir visitantes rápidamente.',
-    url: 'https://microsoft.com'
+  image: 'travel.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'Portafolio de Viajes por el Mundo',
+    description: 'Portafolio visualmente atractivo que convierte curiosos en seguidores leales.',
+    url: 'https://luxury-mochi-802acb.netlify.app/'
 }, {
     image: 'servicios.webp',
     tags: ['HTML', 'CSS'],
     title: 'Ventas de Servicios Online',
     description: 'Página diseñada para maximizar conversiones con un enfoque claro en la confianza y la acción.',
-    url: 'https://servicios.com'
+    url: 'https://effulgent-paprenjak-5a37c9.netlify.app/'
+}, {
+  image: 'microsoft.webp',
+    tags: ['HTML', 'CSS'],
+    title: 'Landing Page de Microsoft',
+    description: 'Landing optimizada para captar atención y convertir visitantes rápidamente.',
+    url: 'https://cute-croquembouche-30f076.netlify.app/'
+}, {
+    image: 'movies.webp',
+    tags: ['HTML', 'CSS', 'Javascript'],
+    title: 'App de Peliculas',
+    description: 'Página diseñada para visualizar las peliculas y series más vistas en la temporada.',
+    url: 'https://euphonious-medovik-06d99e.netlify.app/'
 }, {
     image: 'tienda.webp',
     tags: ['HTML', 'CSS', 'Javascript'],
     title: 'Landing Page de Producto',
     description: 'Página optimizada para mostrar un producto y facilitar la compra con información clave y clara.',
-    url: 'https://tienda.com'
-}, {
-    image: 'travel.webp',
-    tags: ['HTML', 'CSS', 'Javascript'],
-    title: 'Portafolio de Viajes por el Mundo',
-    description: 'Portafolio visualmente atractivo que convierte curiosos en seguidores leales.',
-    url: 'https://travel.com'
-}, {
-    image: 'youtube.webp',
-    tags: ['HTML', 'CSS', 'Javascript', 'PHP'],
-    title: 'Ventas para Restaurante',
-    description: 'Página diseñada para facilitar pedidos con un enfoque visual atractivo y proceso sencillo.',
-    url: 'https://youtube.com'
+    url: 'https://superlative-manatee-ca799b.netlify.app/'
 }]
 ---
 
@@ -74,16 +74,19 @@ const PROJECTS = [{
     <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
       {
         PROJECTS.map((project, i) => (
-          <div
+          <a
+            href={project.url}
+            target="_blank"
             class={`relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none ${i != 0 ? 'hidden' : ''}`}
             data-twe-carousel-active={i == 0 ? true : undefined}
             data-twe-carousel-item
             style="backface-visibility: hidden">
-            <img
-              src={`/projects/${project.image}`}
-              class="block w-full"
-              alt={project.title} />
-          </div>
+              <img
+                src={`/projects/${project.image}`}
+                class="block w-full"
+                alt={project.title} 
+              />
+          </a>
         ))
       }
     </div>
