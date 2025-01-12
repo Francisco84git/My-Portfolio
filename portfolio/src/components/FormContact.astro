@@ -8,7 +8,7 @@ import WorkIcon from "./icons/Work.astro";
         <span class="block text-indigo-500">y lo haré realidad</span>
     </h1>
 
-    <form id="contactForm" class="w-full max-w-[800px] mx-auto">
+    <form action="/php/send.php" method="POST" id="contactForm" class="w-full max-w-[800px] mx-auto">
         <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-3">
                 <label for="email" class="block mb-2 text-sm font-bold text-gray-900">
@@ -28,7 +28,7 @@ import WorkIcon from "./icons/Work.astro";
                 <label for="help" class="block mb-2 text-sm font-bold text-gray-900">
                     Cuéntame sobre tu proyecto
                 </label>
-                <textarea id="help" rows="4" class="outline-none block p-2.5 w-full sm:text-sm text-gray-900 bg-gray-50 rounded-lg border-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="¿Necesitas una web profesional que atraiga más clientes? Escríbeme tus necesidades aquí." required></textarea>
+                <textarea id="help" name="help" rows="4" class="outline-none block p-2.5 w-full sm:text-sm text-gray-900 bg-gray-50 rounded-lg border-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="¿Necesitas una web profesional que atraiga más clientes? Escríbeme tus necesidades aquí." required></textarea>
                 <p id="helpError" class="text-red-500 text-xs mt-1 font-bold hidden">El mensaje debe tener al menos 10 caracteres.</p>
             </div>
 
@@ -114,15 +114,7 @@ import WorkIcon from "./icons/Work.astro";
             const isHelpValid = validateHelp();
 
             if (isEmailValid && isNameValid && isHelpValid) {
-                // Enviar el formulario a un correo personal
-                // Aquí puedes usar un servicio de backend como EmailJS para enviar el correo
-                // Ejemplo:
-                // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
-                //     .then(() => {
-                //         alert('Mensaje enviado!');
-                //     }, (error) => {
-                //         alert('Error al enviar el mensaje: ' + error.text);
-                //     });
+                event.preventDefault();
                 alert('Formulario enviado correctamente!');
             }
         });
